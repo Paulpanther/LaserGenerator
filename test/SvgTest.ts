@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import {expect} from "chai";
-import SvgElement from "../app/src/svgdom/element/SvgElement";
-import PathElement from "../app/src/svgdom/element/PathElement";
+import SvgElement from "../app/svgdom/element/SvgElement";
+import PathElement from "../app/svgdom/element/PathElement";
 
 describe("Svg", () => {
     describe("render", () => {

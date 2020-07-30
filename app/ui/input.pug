@@ -1,0 +1,5 @@
+.input
+    label(:for="id") {{ title }}
+    .content
+        block content
+            input.main(:id="id" :type="type" step="0.01" v-model="value")

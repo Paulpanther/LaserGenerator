@@ -1,21 +1,62 @@
 <template lang="pug">
-    .container Hello {{bundler}}
+    .app
+        h1 Laser Generator
+        Dome
 </template>
 
 <script lang="ts">
     import Vue from "vue";
+    import Component from "vue-class-component";
+    import Dome from "./pages/Dome.vue";
 
-    export default Vue.extend({
-        data() {
-            return {
-                bundler: "Parcel"
-            };
-        }
-    });
+    @Component({components: {Dome}})
+    export default class App extends Vue {}
 </script>
 
-<style lang="scss" scoped>
-    .container {
-        color: green;
-    }
+<style lang="sass">
+    html
+        font-size: 16px
+
+    body
+        margin: 0
+        padding: 0
+
+        font-family: "Roboto", sans-serif
+        font-size: 62.5%
+
+    input, select
+        box-sizing: border-box
+        border: none
+        border-bottom: 1px solid #000
+        padding: 2px
+        vertical-align: bottom
+        outline: none
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button
+        -webkit-appearance: none
+        margin: 0
+
+    input[type=number]
+        -moz-appearance: textfield
+
+    .input
+        margin-bottom: 1.2em
+
+        .content
+            display: flex
+            width: 20em
+
+            .main
+                flex-grow: 1
+
+        label
+            display: block
+            font-size: 1.2em
+</style>
+
+<style lang="sass" scoped>
+    .app
+        max-width: 400px
+        margin: 0 auto
 </style>
