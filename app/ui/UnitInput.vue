@@ -9,6 +9,7 @@
     import Component from "vue-class-component";
     import {Prop} from "vue-property-decorator";
     import Input from "./Input";
+    import SvgUtil from '../svgdom/SvgUtil';
 
     @Component
     export default class UnitInput extends Input {
@@ -34,11 +35,11 @@
         }
 
         private static _ptToPx(pt: number): number {
-            return pt / 0.75;
+            return pt / SvgUtil.pxToPt;
         }
 
         private static _mmToPx(mm: number): number {
-            return mm * 3.7795;
+            return mm / SvgUtil.pxToMM;
         }
     }
 </script>

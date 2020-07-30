@@ -1,5 +1,6 @@
 import Element from "./Element";
 import StrokeFillElement from './StrokeFillElement';
+import SvgUtil from '../SvgUtil';
 
 export interface Style {
     stroke: string;
@@ -17,7 +18,7 @@ export default class PathElement extends StrokeFillElement {
     getRenderedAttributes(): Map<string, string> {
         return new Map([
             ["stroke", this.stroke],
-            ["stroke-width", this.strokeWidth.toString()],
+            ["stroke-width", SvgUtil.asPt(this.strokeWidth)],
             ["fill", this.fill],
             ["d", this.d],
         ]);

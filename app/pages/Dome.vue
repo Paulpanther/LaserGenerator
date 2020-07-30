@@ -39,13 +39,25 @@
         };
 
         public svgString: string = "<svgString />";
-        public svg: SvgElement;
 
         public mounted() {
             this.redrawSvg();
         }
 
         public redrawSvg() {
+            const svg = this.generateSvg();
+            const ratio = this.$refs.svgElem.clientWidth / svg.width;
+            svg.setMinStrokeWidthForAll(1 / ratio);
+            this.svgString = svg.render();
+        }
+
+        public save() {
+            const svg = this.generateSvg();
+            const blob = new Blob([svg.renderAsFile()], {type: "image/svg+xml;charset=utf-8"});
+            saveAs(blob, "generated-for-laser-cutter.svg");
+        }
+
+        private generateSvg(): SvgElement {
             const config: Config = {
                 centerRadius: this.$refs.centerRadiusI.getValueAsPx(),
                 divisionCount: this.$refs.divisionCountI.getValueAsNumber(),
@@ -59,20 +71,7 @@
                     return;
                 }
             }
-            const svg = DomeGenerator(config);
-            const ratio = this.$refs.svgElem.clientWidth / svg.width;
-            svg.setMinStrokeWidthForAll(1 / ratio);
-            this.svg = svg;
-            this.svgString = svg.render();
-        }
-
-        public save() {
-            if (!this.svg) {
-                this.redrawSvg();
-            }
-
-            const blob = new Blob([this.svg.renderAsFile()], {type: "image/svg+xml;charset=utf-8"})
-            saveAs(blob, "generated-for-laser-cutter.svg");
+            return DomeGenerator(config);
         }
     }
 </script>
