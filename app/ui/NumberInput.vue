@@ -8,8 +8,18 @@
     import Input from "./Input";
 
     @Component
-    export default class Number extends Input {
+    export default class NumberInput extends Input {
         protected type = "number";
+
+        public getValueAsNumber(): number | undefined {
+            const n = Number(this.value);
+
+            if (n && !isNaN(n)) {
+                return n;
+            } else {
+                return undefined;
+            }
+        }
     }
 </script>
 

@@ -20,4 +20,8 @@ export default class Input extends Vue {
     protected type = "text";
     public value = this.defaultValue;
     private id = Input.nextId();
+
+    public onChange() {
+        this.$emit("change");
+    }
 }

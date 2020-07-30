@@ -1,8 +1,8 @@
 <template lang="pug">
     extends input.pug
     block append content
-        select(v-model="selectedType")
-            option(v-for="type in types" :key="type" ) {{ type }}
+        select(v-model="selectedType" @change="onChange")
+            option(v-for="type in types" :key="type") {{ type }}
 </template>
 
 <script lang="ts">
@@ -26,7 +26,7 @@
                 return Number(this.value);
             } else if (this.selectedType === "pt") {
                 return Number(UnitInput._ptToPx(this.value));
-            } else if (this.selectedType === "pt") {
+            } else if (this.selectedType === "mm") {
                 return Number(UnitInput._mmToPx(this.value));
             } else {
                 return undefined;

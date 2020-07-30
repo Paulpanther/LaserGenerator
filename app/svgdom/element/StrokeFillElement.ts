@@ -1,5 +1,4 @@
 import Element from "./Element";
-import StrokeFillElement from './StrokeFillElement';
 
 export interface Style {
     stroke: string;
@@ -7,31 +6,29 @@ export interface Style {
     fill: string;
 }
 
-export default class PathElement extends StrokeFillElement {
+export default abstract class StrokeFillElement extends Element {
+
+    public static applyToAll(s: Style, ...ps: StrokeFillElement[]): void {
+        for (const p of ps) {
+            p.applyStyle(s);
+        }
+    }
 
     public stroke = "none";
     public strokeWidth = 0;
     public fill = "none";
-    private _d = "";
+
+    public applyStyle(s: Style): void {
+        this.stroke = s.stroke;
+        this.strokeWidth = s.strokeWidth;
+        this.fill = s.fill;
+    }
 
     getRenderedAttributes(): Map<string, string> {
         return new Map([
             ["stroke", this.stroke],
             ["stroke-width", this.strokeWidth.toString()],
             ["fill", this.fill],
-            ["d", this.d],
         ]);
-    }
-
-    getTagName(): string {
-        return "path";
-    }
-
-    get d(): string {
-        return this._d;
-    }
-
-    set d(v: string) {
-        this._d = v;
     }
 }

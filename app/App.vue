@@ -41,7 +41,7 @@
         -moz-appearance: textfield
 
     .input
-        margin-bottom: 1.2em
+        margin-bottom: 1.3em
 
         .content
             display: flex
@@ -53,10 +53,26 @@
         label
             display: block
             font-size: 1.2em
+
+    .page
+        display: flex
+
+        .form
+            display: flex
+            flex-direction: column
+            justify-content: center
+
+        .svg
+            flex-grow: 1
+            padding: 0 5em
+
+            svg
+                width: 100%
+                height: 100%
 </style>
 
 <style lang="sass" scoped>
     .app
-        max-width: 400px
+        max-width: 800px
         margin: 0 auto
 </style>

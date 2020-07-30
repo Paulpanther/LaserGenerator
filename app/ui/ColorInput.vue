@@ -1,7 +1,7 @@
 <template lang="pug">
     extends input.pug
     block append content
-        input.color(type="color" v-model="value")
+        input.color(type="color" v-model="value" @change="onChange")
 </template>
 
 <script lang="ts">
