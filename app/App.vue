@@ -54,6 +54,12 @@
             display: block
             font-size: 1.2em
 
+    .buttons
+        display: flex
+
+        button
+            width: 50%
+
     .page
         display: flex
 

@@ -5,7 +5,7 @@ import PathElement from "../app/svgdom/element/PathElement";
 
 describe("Svg", () => {
     describe("render", () => {
-        it("should render the svg correctly", () => {
+        it("should render the svgString correctly", () => {
             const svg = new SvgElement();
             svg.width = 200;
             svg.height = 400;
@@ -18,7 +18,7 @@ describe("Svg", () => {
             svg.children.push(p1);
             svg.children.push(p2);
 
-            expect(svg.render()).to.equal(fs.readFileSync("test/expected1.svg", {encoding: "utf8"}));
+            expect(svg.render()).to.equal(fs.readFileSync("test/expected1.svgString", {encoding: "utf8"}));
         });
     });
 });

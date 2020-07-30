@@ -8,18 +8,23 @@
         UnitInput(default-value="3" default-type="mm" title="Width of a circle" @change="redrawSvg" ref="divisionSizeI")
         UnitInput(default-value="0.01" default-type="pt" title="Stroke Width" @change="redrawSvg" ref="strokeSizeI")
         ColorInput(default-value="#ff0000" title="Stroke Color" @change="redrawSvg" ref="strokeColorI")
+        .buttons
+            button Generate
+            button(@click="save") Save
 
     block svg
-        .svg(v-html="svg" ref="svgElem")
+        .svg(v-html="svgString" ref="svgElem")
 </template>
 
 <script lang="ts">
     import Vue from "vue";
     import Component from "vue-class-component";
+    import { saveAs } from "file-saver";
     import UnitInput from "./../ui/UnitInput.vue";
     import ColorInput from "../ui/ColorInput.vue";
     import NumberInput from '../ui/NumberInput.vue';
     import DomeGenerator, {Config} from './DomeGenerator';
+    import SvgElement from '../svgdom/element/SvgElement';
 
     @Component({components: {ColorInput, UnitInput, NumberInput}})
     export default class Dome extends Vue {
@@ -33,7 +38,8 @@
             svgElem: HTMLDivElement
         };
 
-        public svg: string = "<svg />";
+        public svgString: string = "<svgString />";
+        public svg: SvgElement;
 
         public mounted() {
             this.redrawSvg();
@@ -49,14 +55,24 @@
             };
             for (const v of Object.values(config)) {
                 if (v == undefined) {
-                    console.log("Invalid config");
+                    alert("Cannot render the svg: Invalid input params");
                     return;
                 }
             }
             const svg = DomeGenerator(config);
             const ratio = this.$refs.svgElem.clientWidth / svg.width;
             svg.setMinStrokeWidthForAll(1 / ratio);
-            this.svg = svg.render();
+            this.svg = svg;
+            this.svgString = svg.render();
+        }
+
+        public save() {
+            if (!this.svg) {
+                this.redrawSvg();
+            }
+
+            const blob = new Blob([this.svg.renderAsFile()], {type: "image/svg+xml;charset=utf-8"})
+            saveAs(blob, "generated-for-laser-cutter.svg");
         }
     }
 </script>

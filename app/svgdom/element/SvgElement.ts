@@ -7,9 +7,9 @@ export default class SvgElement extends Element {
     public height = 0;
     private xmlns = "http://www.w3.org/2000/svg";
 
-    public render(): string {
-        // const versionStr = '<?xml version="1.0" encoding="UTF-8" ?>\r\n';
-        return super.render() + "\r\n";
+    public renderAsFile(): string {
+        const versionStr = '<?xml version="1.0" encoding="UTF-8" ?>\r\n';
+        return versionStr + this.render() + "\r\n";
     }
 
     getRenderedAttributes(): Map<string, string> {

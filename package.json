@@ -11,13 +11,17 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^4.5.0",
+    "file-saver": "^2.0.2",
+    "three": "^0.119.1",
     "vue": "latest",
     "vue-hot-reload-api": "^2.3.4"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
+    "@types/file-saver": "^2.0.1",
     "@types/mocha": "^8.0.0",
     "@types/node": "^14.0.26",
+    "@types/three": "^0.103.2",
     "@types/vue": "^2.0.0",
     "@vue/component-compiler-utils": "^3.2.0",
     "chai": "^4.2.0",
