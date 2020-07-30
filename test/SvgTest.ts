@@ -18,7 +18,7 @@ describe("Svg", () => {
             svg.children.push(p1);
             svg.children.push(p2);
 
-            expect(svg.render()).to.equal(fs.readFileSync("test/expected1.svgString", {encoding: "utf8"}));
+            expect(svg.renderAsFile()).to.equal(fs.readFileSync("test/expected1.svgString", {encoding: "utf8"}));
         });
     });
 });

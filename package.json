@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "npx parcel app/index.pug",
+    "build": "npx parcel build app/index.pug",
     "test": "mocha -r ts-node/register test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Paulpanther/LaserGenerator.git"
   },
   "author": "Paul Methfessel",
   "license": "MIT",
