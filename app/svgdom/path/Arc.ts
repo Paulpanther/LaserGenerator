@@ -1,5 +1,6 @@
 import PathElement from '../element/PathElement';
 import { Vector2 } from 'three';
+import SvgUtil from '../SvgUtil';
 
 export default class Arc extends PathElement {
 

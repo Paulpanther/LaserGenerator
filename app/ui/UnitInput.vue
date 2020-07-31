@@ -19,27 +19,21 @@
 
         protected type = "number";
 
-        private types = ["px", "pt", "mm"];
+        private types = ["pt", "mm"];
         private selectedType = this.defaultType;
 
         public getValueAsPx(): number | undefined {
-            if (this.selectedType === "px") {
+            if (this.selectedType === "pt") {
                 return Number(this.value);
-            } else if (this.selectedType === "pt") {
-                return Number(UnitInput._ptToPx(this.value));
             } else if (this.selectedType === "mm") {
-                return Number(UnitInput._mmToPx(this.value));
+                return Number(UnitInput._mmToPt(this.value));
             } else {
                 return undefined;
             }
         }
 
-        private static _ptToPx(pt: number): number {
-            return pt / SvgUtil.pxToPt;
-        }
-
-        private static _mmToPx(mm: number): number {
-            return mm / SvgUtil.pxToMM;
+        private static _mmToPt(mm: number): number {
+            return mm / SvgUtil.pxToMM * SvgUtil.pxToPt;
         }
     }
 </script>

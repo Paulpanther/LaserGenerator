@@ -18,7 +18,7 @@ export default class PathElement extends StrokeFillElement {
     getRenderedAttributes(): Map<string, string> {
         return new Map([
             ["stroke", this.stroke],
-            ["stroke-width", SvgUtil.asPt(this.strokeWidth)],
+            ["stroke-width", this.strokeWidth.toString()],
             ["fill", this.fill],
             ["d", this.d],
         ]);

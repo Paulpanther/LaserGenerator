@@ -16,7 +16,7 @@ export default class SvgElement extends Element {
         return new Map([
             ["width", this.width.toString()],
             ["height", this.height.toString()],
-            ["viewBox", "0 0 " + this.width + " " + this.height],
+            ["viewBox", "0 0 " + this.width + "pt " + this.height + "pt"],
             ["xmlns", this.xmlns]
         ]);
     }

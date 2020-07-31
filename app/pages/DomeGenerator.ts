@@ -3,6 +3,7 @@ import { Vector2 } from 'three';
 import Arc from '../svgdom/path/Arc';
 import {Style} from '../svgdom/element/StrokeFillElement';
 import CircleElement from '../svgdom/element/CircleElement';
+import SvgUtil from '../svgdom/SvgUtil';
 
 export interface Config {
     centerRadius: number;
