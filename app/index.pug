@@ -3,6 +3,7 @@ html(lang="en")
     head
         meta(charset="utf-8")
         title Laser Generator
+        link(rel="stylesheet" href="../node_modules/github-fork-ribbon-css/gh-fork-ribbon.css")
         link(href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet")
         link(rel="shortcut icon" href="assets/favicon/favicon.ico")
         link(rel="icon" sizes="16x16 32x32 64x64" href="assets/favicon/favicon.ico")
@@ -26,4 +27,9 @@ html(lang="en")
         meta(name="msapplication-config" content="assets/favicon/browserconfig.xml")
     body
         #app
+        a.github-fork-ribbon.fixed.right-top(
+            href="https://github.com/Paulpanther/LaserGenerator"
+            data-ribbon="Fork me on Github"
+            target="_blank"
+            title="Fork me on Github") Fork me on Github
         script(src="./index.ts")
